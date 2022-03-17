@@ -3,8 +3,27 @@
 {% block title 'Agence lorem ipsum' %}
 
 {% block body %}
-    <div class="jumbotron text-center">
-        <h1>Agence lorem ipsum</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos, dolores eligendi explicabo facere molestiae odit perspiciatis praesentium quis, ratione soluta tempora? Aut consequuntur dolorem, magni qui repudiandae temporibus voluptatum.</p>
-    </div>
+  <div class="jumbotron text-center">
+    <h1>Agence lorem ipsum</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis dignissimos, dolores eligendi explicabo facere
+      molestiae odit perspiciatis praesentium quis, ratione soluta tempora? Aut consequuntur dolorem, magni qui
+      repudiandae temporibus voluptatum.</p>
+  </div>
+
+  <div class="container">
+    <h2>Les derniers biens</h2>
+    {% for property in properties %}
+      <div class="col-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
+            </h5>
+            <p class="card-text">{{ property.city }} {{ property.postalCode }}</p>
+            <p class="text-primary h4">{{ property.formattedPrice }} €</p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
